@@ -28,7 +28,7 @@ export default function Home() {
             <motion.div
               initial={{ rotate: -18, y: -18, opacity: 0 }}
               animate={{ rotate: [0, -10, 0], y: 0, opacity: 1 }}
-              transition={{ duration: 0.9, type: "spring" }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
               className="mb-7 inline-flex h-16 w-16 items-center justify-center rounded-md border border-[#e8c547]/35 bg-[#e8c547]/10"
             >
               <Clapperboard className="h-8 w-8 text-[#e8c547]" />
