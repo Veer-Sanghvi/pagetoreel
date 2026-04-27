@@ -99,7 +99,7 @@ export default function CreatePage() {
           const imageData = (await imageResponse.json()) as { imageBase64: string };
           imageBase64 = imageData.imageBase64;
         } catch {
-          imageUrl = createFallbackImage(scene.title, scene.sceneNumber);
+          imageUrl = createFallbackImage();
         }
 
         let audioUrl: string | undefined;
@@ -152,7 +152,9 @@ export default function CreatePage() {
           <Badge className="mb-4 border-[#e8c547]/30 bg-[#e8c547]/10 text-[#e8c547] hover:bg-[#e8c547]/10">
             Up to 8 scenes generated per upload to keep your API costs under $0.65 per reel.
           </Badge>
-          <h1 className="font-serif text-5xl md:text-7xl">Create your storyboard reel</h1>
+          <h1 className="font-serif mx-auto max-w-5xl py-2 text-[clamp(3rem,7vw,5.5rem)] leading-[1.08]">
+            Create your storyboard reel
+          </h1>
           <p className="mx-auto mt-4 max-w-2xl text-[#cfc6b6]">
             This will generate {sceneCount} images (~${estimatedCost} in API credits).
           </p>

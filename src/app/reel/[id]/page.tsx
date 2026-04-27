@@ -62,7 +62,7 @@ function Narration({ scene, overlay = false }: { scene: Scene; overlay?: boolean
       }
     >
       <div className="mb-3 text-xs uppercase tracking-[0.3em] text-[#e8c547]">Scene {scene.sceneNumber}</div>
-      <h2 className="font-serif text-4xl">{scene.title}</h2>
+      <h2 className="font-serif py-1 text-[clamp(2rem,4vw,3rem)] leading-[1.12]">{scene.title}</h2>
       <p className="mt-4 text-lg leading-8 text-[#ddd5c5]">{scene.narratorText}</p>
       <div className="mt-5 flex flex-wrap gap-2">
         {scene.characters.map((character) => (
@@ -110,7 +110,9 @@ function Autoplay({ reel }: { reel: Reel }) {
             <Badge className="bg-[#e8c547]/10 text-[#e8c547] hover:bg-[#e8c547]/10">
               {scene.sceneNumber}/{reel.scenes.length}
             </Badge>
-            <h2 className="mt-4 font-serif text-4xl">{scene.title}</h2>
+            <h2 className="mt-4 font-serif py-1 text-[clamp(2rem,4vw,3rem)] leading-[1.12]">
+              {scene.title}
+            </h2>
             <p className="mt-3 text-lg leading-8 text-[#d8d0bf]">{scene.narratorText}</p>
           </div>
         </motion.div>
@@ -149,7 +151,7 @@ export default function ReelPage() {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#0f0f0f] p-6 text-[#f5f5f0]">
         <div className="text-center">
-          <h1 className="font-serif text-5xl">Reel not found</h1>
+          <h1 className="font-serif py-2 text-[clamp(3rem,8vw,5rem)] leading-[1.12]">Reel not found</h1>
           <Button asChild className="mt-6 bg-[#e8c547] text-black hover:bg-[#f2d76d]">
             <Link href="/create">Start New Reel</Link>
           </Button>
@@ -168,7 +170,9 @@ export default function ReelPage() {
       ) : null}
       <header className="mx-auto max-w-7xl px-5 pb-8 pt-32">
         <Badge className="mb-4 bg-[#e8c547]/10 text-[#e8c547] hover:bg-[#e8c547]/10">{reel.genre}</Badge>
-        <h1 className="font-serif text-5xl md:text-7xl">{reel.title}</h1>
+        <h1 className="font-serif max-w-5xl py-2 text-[clamp(3rem,6vw,5rem)] leading-[1.12]">
+          {reel.title}
+        </h1>
         <p className="mt-3 max-w-3xl text-lg text-[#cfc6b6]">{reel.mood}</p>
         <div className="mt-6 flex flex-wrap gap-3 print:hidden">
           <Button variant="outline" onClick={() => window.print()}>

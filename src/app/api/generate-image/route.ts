@@ -17,6 +17,11 @@ export async function POST(req: Request) {
     return Response.json({ error: "visualPrompt is required." }, { status: 400 });
   }
 
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey || apiKey === "your_key_here") {
+    return Response.json({ error: "OPENAI_API_KEY is not configured." }, { status: 503 });
+  }
+
   const { image } = await experimental_generateImage({
     model: openai.image("dall-e-3"),
     prompt: `${visualPrompt}. Art style: ${style}. Cinematic lighting. No text, captions, letters, symbols, logos, or watermarks in image. Aspect ratio matches: ${panelStyle}.`,

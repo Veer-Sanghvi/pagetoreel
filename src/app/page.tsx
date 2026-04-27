@@ -34,7 +34,7 @@ export default function Home() {
               <Clapperboard className="h-8 w-8 text-[#e8c547]" />
             </motion.div>
 
-            <h1 className="font-serif text-6xl leading-none tracking-normal text-[#f5f5f0] drop-shadow-[0_0_28px_rgba(232,197,71,0.24)] md:text-8xl">
+            <h1 className="font-serif max-w-full overflow-visible py-2 text-[clamp(4rem,10vw,7rem)] leading-[1.08] tracking-normal text-[#f5f5f0] drop-shadow-[0_0_28px_rgba(232,197,71,0.24)]">
               PageToReel
             </h1>
             <p className="mt-6 max-w-2xl text-2xl text-[#f5f5f0] md:text-3xl">

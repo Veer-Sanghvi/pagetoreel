@@ -46,12 +46,7 @@ export type Reel = {
 const svgToDataUri = (svg: string) =>
   `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 
-const demoImage = (
-  title: string,
-  primary: string,
-  secondary: string,
-  foreground: string,
-) =>
+const demoImage = (primary: string, secondary: string, foreground: string) =>
   svgToDataUri(`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
     <defs>
@@ -71,7 +66,6 @@ const demoImage = (
     <path d="M235 325 h245 l55 420 H180 Z" fill="#101010" opacity=".78"/>
     <path d="M980 255 h285 l68 490 H910 Z" fill="#111" opacity=".7"/>
     <circle cx="705" cy="310" r="62" fill="#e8c547" opacity=".82"/>
-    <text x="90" y="120" font-family="Georgia, serif" font-size="72" fill="#f5f5f0">${title}</text>
   </svg>`);
 
 export const demoReel: Reel = {
@@ -98,7 +92,7 @@ export const demoReel: Reel = {
       setting: "A foggy London thoroughfare",
       emotion: "melancholic",
       panelStyle: "wide",
-      imageUrl: demoImage("The Wounded Doctor", "#28221d", "#6f5b40", "#171410"),
+      imageUrl: demoImage("#28221d", "#6f5b40", "#171410"),
     },
     {
       id: "demo-2",
@@ -113,7 +107,7 @@ export const demoReel: Reel = {
       setting: "St. Bartholomew's Hospital",
       emotion: "mysterious",
       panelStyle: "portrait",
-      imageUrl: demoImage("The Introduction", "#1d2c32", "#4e6065", "#11191b"),
+      imageUrl: demoImage("#1d2c32", "#4e6065", "#11191b"),
     },
     {
       id: "demo-3",
@@ -128,7 +122,7 @@ export const demoReel: Reel = {
       setting: "A cluttered hospital laboratory",
       emotion: "joyful",
       panelStyle: "square",
-      imageUrl: demoImage("The Laboratory", "#27272a", "#61511f", "#131313"),
+      imageUrl: demoImage("#27272a", "#61511f", "#131313"),
     },
     {
       id: "demo-4",
@@ -143,12 +137,11 @@ export const demoReel: Reel = {
       setting: "Baker Street at night",
       emotion: "dramatic",
       panelStyle: "panoramic",
-      imageUrl: demoImage("221B Awaits", "#111827", "#3f2f1f", "#090b0f"),
+      imageUrl: demoImage("#111827", "#3f2f1f", "#090b0f"),
     },
   ],
 };
 
-export const createFallbackImage = (title: string, sceneNumber: number) =>
-  demoImage(`Scene ${sceneNumber}: ${title}`, "#111111", "#332b1c", "#070707");
+export const createFallbackImage = () => demoImage("#111111", "#332b1c", "#070707");
 
 export const estimateImageCost = (count: number) => (count * 0.08).toFixed(2);
