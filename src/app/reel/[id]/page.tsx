@@ -19,14 +19,25 @@ function imageSrc(scene: Scene) {
   return scene.imageUrl ?? "";
 }
 
+function DemoArtNote() {
+  return (
+    <div className="mt-2 max-w-[13rem] rounded-full border border-[#e8c547]/30 bg-[#e8c547]/10 px-3 py-2 text-xs leading-5 text-[#e8c547] backdrop-blur">
+      Demo uses atmospheric illustrations. Live reels generate DALL-E 3 art per scene.
+    </div>
+  );
+}
+
 function ScenePanel({ scene, total }: { scene: Scene; total: number }) {
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1]);
 
   return (
     <section className="relative min-h-screen border-b border-white/10 bg-[#0f0f0f] print:min-h-0 print:break-after-page">
-      <div className="sticky left-4 top-28 z-20 hidden w-fit rounded-full border border-[#e8c547]/30 bg-black/60 px-3 py-1 text-sm text-[#e8c547] backdrop-blur md:block">
-        {scene.sceneNumber}/{total}
+      <div className="sticky left-4 top-28 z-20 hidden w-fit md:block">
+        <div className="rounded-full border border-[#e8c547]/30 bg-black/60 px-3 py-1 text-sm text-[#e8c547] backdrop-blur">
+          {scene.sceneNumber}/{total}
+        </div>
+        <DemoArtNote />
       </div>
       <div
         className={`mx-auto grid max-w-7xl gap-6 px-5 py-20 ${
@@ -110,6 +121,7 @@ function Autoplay({ reel }: { reel: Reel }) {
             <Badge className="bg-[#e8c547]/10 text-[#e8c547] hover:bg-[#e8c547]/10">
               {scene.sceneNumber}/{reel.scenes.length}
             </Badge>
+            <DemoArtNote />
             <h2 className="mt-4 font-serif py-1 text-[clamp(2rem,4vw,3rem)] leading-[1.12]">
               {scene.title}
             </h2>
