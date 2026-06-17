@@ -38,31 +38,46 @@ export default function Home() {
               PageToReel
             </h1>
             <p className="mt-6 max-w-2xl text-2xl text-[#f5f5f0] md:text-3xl">
-              Your book. Seen, not just read.
+              Your story, finally seen.
             </p>
             <p className="mt-4 max-w-xl text-lg leading-8 text-[#d8d0bf]">
-              Upload a chapter and watch it become a cinematic visual story with illustrated panels,
-              narration, motion, and an optional voice track.
+              Millions of books go unread because reading takes effort. PageToReel turns any chapter
+              into a cinematic visual reel with AI-extracted scenes, illustrated panels, and
+              narration in under a minute.
             </p>
 
-            <div className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-3">
+            <motion.div
+              className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-3"
+              initial="hidden"
+              animate="visible"
+              variants={{ visible: { transition: { staggerChildren: 0.1, delayChildren: 0.4 } } }}
+            >
               {stats.map(({ value, label, Icon }) => (
-                <div key={label} className="rounded-lg border border-white/10 bg-white/[0.04] p-4">
+                <motion.div
+                  key={label}
+                  variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+                  className="rounded-lg border border-white/10 bg-white/[0.04] p-4 transition hover:bg-white/[0.07]"
+                >
                   <Icon className="mb-4 h-5 w-5 text-[#e8c547]" />
                   <div className="text-xl font-semibold">{value}</div>
                   <div className="text-sm text-[#b8b0a0]">{label}</div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.65 }}
+              className="mt-9 flex flex-col gap-3 sm:flex-row"
+            >
               <ShimmerButton asChild size="lg">
                 <Link href="/reel/demo">Try Demo Reel</Link>
               </ShimmerButton>
               <ShimmerButton asChild size="lg" className="bg-white text-black hover:bg-[#f5f5f0]">
                 <Link href="/create">Upload Your Story</Link>
               </ShimmerButton>
-            </div>
+            </motion.div>
           </div>
 
           <BlurFade className="relative z-10">
